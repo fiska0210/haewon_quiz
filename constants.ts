@@ -1,0 +1,82 @@
+
+import { Question } from './types';
+
+export const QUIZ_QUESTIONS: Question[] = [
+  {
+    id: 1,
+    text: "海嫄最喜歡的飲料是什麼？",
+    options: ["奶茶", "南非國寶茶", "美式咖啡", "溫開水"],
+    correctAnswer: "美式咖啡",
+    fact: "海嫄是著名的美式咖啡愛好者，甚至在直播中常看到她拿著大杯冰美！"
+  },
+  {
+    id: 2,
+    text: "海嫄的出生地在哪裡？",
+    options: ["仁川", "江原道", "平昌", "首爾"],
+    correctAnswer: "仁川",
+    fact: "她是仁川的女兒，對家鄉有很深的感情。"
+  },
+  {
+    id: 3,
+    text: "海嫄最喜歡的食物是什麼？",
+    options: ["餃子", "馬鈴薯排骨湯", "蛋塔", "獵奇辣炒年糕"],
+    correctAnswer: "餃子",
+    fact: "海嫄特別喜歡吃餃子，這也是 NSWER 們都知道的小秘密。"
+  },
+  {
+    id: 4,
+    text: "海嫄最喜歡哪一個季節？",
+    options: ["春", "夏", "秋", "冬"],
+    correctAnswer: "冬",
+    fact: "海嫄曾多次提到自己最喜歡冷冷的冬天。"
+  },
+  {
+    id: 5,
+    text: "海嫄官方公布的身高是多少？",
+    options: ["162.8", "162.6", "162.2", "162.5"],
+    correctAnswer: "162.8",
+    fact: "雖然海嫄常自嘲身高，但 162.8cm 是非常有朝氣的高度！"
+  },
+  {
+    id: 6,
+    text: "海嫄是在哪一年進入 JYP 娛樂的？",
+    options: ["2015", "2016", "2017", "2018"],
+    correctAnswer: "2017",
+    fact: "她在 2017 年通過面試成為練習生，並展現了驚人的歌唱實力。"
+  },
+  {
+    id: 7,
+    text: "海嫄養的寵物名字叫什麼？",
+    options: ["Coco", "Sirius", "Bomi", "Ddori"],
+    correctAnswer: "Coco",
+    fact: "海嫄有一隻心愛的狗狗叫 Coco。"
+  },
+  {
+    id: 8,
+    text: "海嫄在家中的手足成員是？",
+    options: ["哥哥", "姊姊", "弟弟", "妹妹"],
+    correctAnswer: "姊姊",
+    fact: "海嫄有一個親姊姊。"
+  },
+  {
+    id: 9,
+    text: "聽音樂的時候，海嫄覺得什麼最重要？",
+    options: ["歌詞", "旋律", "節奏"],
+    correctAnswer: "歌詞",
+    fact: "感性的海嫄在聽音樂時，比起節奏，更在意歌詞傳達的意境。"
+  },
+  {
+    id: 10,
+    text: "海嫄的血型是什麼？",
+    options: ["A型", "B型", "O型", "AB型"],
+    correctAnswer: "O型",
+    fact: "活潑開朗的海嫄是 O 型血。"
+  },
+  {
+    id: 11,
+    text: "海嫄的近視度數大約是多少？",
+    options: ["450度", "550度", "650度", "750度"],
+    correctAnswer: "650度",
+    fact: "海嫄的近視度數高達 650 度，所以平時常戴隱形眼鏡或粗框眼鏡。"
+  }
+];
