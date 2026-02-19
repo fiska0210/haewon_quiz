@@ -48,19 +48,14 @@ const QuizCard: React.FC<QuizCardProps> = ({
           <button
             key={idx}
             onClick={() => onSelect(option)}
-            className="group relative flex items-center w-full p-4 text-left border-2 border-slate-100 rounded-2xl hover:border-emerald-500 hover:bg-emerald-50 transition-all active:scale-[0.98]"
+            className="group relative flex items-center w-full p-4 text-left border-2 border-slate-100 rounded-2xl transition-all active:scale-[0.98] active:bg-slate-50"
           >
-            <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-slate-100 text-slate-500 group-hover:bg-emerald-500 group-hover:text-white flex items-center justify-center font-bold mr-4 transition-colors">
+            <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center font-bold mr-4 transition-colors">
               {String.fromCharCode(65 + idx)}
             </span>
-            <span className="text-lg font-medium text-slate-700 group-hover:text-emerald-700">
+            <span className="text-lg font-medium text-slate-700">
               {option}
             </span>
-            <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
-              <svg className="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
           </button>
         ))}
       </div>

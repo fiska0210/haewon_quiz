@@ -67,16 +67,48 @@ export const QUIZ_QUESTIONS: Question[] = [
   },
   {
     id: 10,
+    text: "海嫄的吉他叫什麼名字？",
+    options: ["Artemis", "Athena", "Dionysus", "Zeus"],
+    correctAnswer: "Dionysus",
+    fact: "MIXXPLORE 2晚上的營火派對時，海嫄不小心撞到吉他的時候有提到他的名字。"
+  },
+  {
+    id: 11,
     text: "海嫄的血型是什麼？",
     options: ["A型", "B型", "O型", "AB型"],
     correctAnswer: "O型",
     fact: "活潑開朗的海嫄是 O 型血。"
   },
   {
-    id: 11,
+    id: 12,
     text: "海嫄的近視度數大約是多少？",
     options: ["450度", "550度", "650度", "750度"],
     correctAnswer: "650度",
     fact: "海嫄的近視度數高達 650 度，所以平時常戴隱形眼鏡或粗框眼鏡。"
+  },
+  {
+    id: 13,
+    text: "海嫄的閃光度數大約是多少？",
+    options: ["125度", "150度", "175度", "200度"],
+    correctAnswer: "175度",
+    fact: "海嫄的閃光度數約 175 度，所以平時常戴隱形眼鏡或粗框眼鏡。"
+  },
+  {
+    id: 14,
+    text: "下列何者“不是”海嫄在NMIXX官方YouTube頻道Cover過的歌曲？",
+    options: ["Sabrina Carpenter - Please Please Please",
+      "DAY6 - 사랑, 이게 맞나 봐",
+      "Stephanie Poetri - I Love You 3000 ",
+      "죠지 - Boat"],
+    correctAnswer: "죠지 - Boat",
+    fact: "海嫄的在리무진서비스的快問快唱中有翻唱過Boat的片段，不過在NMIXX的YouTube上有完整Cover這首歌的是Lily唷。"
+  },
+  {
+    id: 15,
+    text: "海嫄練習生時期，因為表現優異而獲得海外旅遊的地點為何？",
+    options: ["巴黎", "紐約", "東京", "洛杉磯"],
+    correctAnswer: "洛杉磯",
+    fact: "海嫄與Lily在練習生時期，因為獲選練習生綜合評價一、二名，而獲得去洛杉磯海外教育營的機會。"
   }
 ];
+

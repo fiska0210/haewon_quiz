@@ -16,15 +16,15 @@ const Result: React.FC<ResultProps> = ({ userAnswers, questions, onReset }) => {
   const getTitle = () => {
     if (score === questions.length) return "吳海嫄大師！";
     if (score >= 8) return "資深 NSWER";
-    if (score >= 5) return "海嫄愛好者";
-    return "需要多看直播喔！";
+    if (score >= 6) return "海嫄愛好者";
+    return "需要多看直播跟綜藝喔！";
   };
 
   const getMessage = () => {
-    if (score === questions.length) return "天哪！你根本是住在海嫄身邊的人吧？完美無缺！";
-    if (score >= 8) return "非常優秀！你對海嫄的了解已經贏過大部分的人了。";
-    if (score >= 5) return "還不錯！看來你有在關注海嫄的動向。";
-    return "沒關係，現在開始追 NMIXX 的直播還不遲！趕快去複習一下。";
+    if (score === questions.length) return "海嫄系 認證！ 恭喜你獲得抽獎機會～";
+    if (score >= 8) return "非常優秀！你對海嫄的了解已經贏過大部分的人了! 恭喜你獲得抽獎機會～";
+    if (score >= 6) return "還不錯！看來你有在關注海嫄的動向! 恭喜你獲得抽獎機會～";
+    return "沒關係，現在開始追 NMIXX 的直播跟綜藝還不遲！趕快去複習一下。";
   };
 
   return (
