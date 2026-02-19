@@ -36,7 +36,7 @@ const Intro: React.FC<IntroProps> = ({ onStart }) => {
       <div className="space-y-2">
         <h2 className="text-2xl font-bold text-slate-800">歡迎來到海嫄大哉問</h2>
         <p className="text-slate-600 max-w-sm">
-          這裡有 11 道關於 NMIXX 隊長吳海嫄的趣味題目<br></br>
+          這裡有 15 道關於 NMIXX 隊長吳海嫄的趣味題目<br></br>
           一起來測試你對海嫄的了解程度吧！
         </p>
       </div>
