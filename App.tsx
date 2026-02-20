@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import { QUIZ_QUESTIONS } from './constants';
 import { QuizState, UserAnswers, Question } from './types';
@@ -6,6 +5,7 @@ import Header from './components/Header';
 import Intro from './components/Intro';
 import QuizCard from './components/QuizCard';
 import Result from './components/Result';
+import { motion, AnimatePresence } from 'motion/react';
 
 // Fisher-Yates 洗牌演算法
 const shuffleArray = <T,>(array: T[]): T[] => {
@@ -60,31 +60,31 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-2xl bg-white rounded-3xl shadow-xl overflow-hidden">
-        <Header />
-        
+          <Header />
+          
         <main className="p-6 md:p-10">
-          {gameState === 'INTRO' && (
+              {gameState === 'INTRO' && (
             <Intro onStart={startQuiz} />
-          )}
+              )}
 
-          {gameState === 'QUIZ' && shuffledQuestions.length > 0 && (
-            <QuizCard
-              question={shuffledQuestions[currentQuestionIndex]}
-              totalQuestions={shuffledQuestions.length}
-              currentIndex={currentQuestionIndex}
-              onSelect={handleAnswerSelection}
-            />
-          )}
+              {gameState === 'QUIZ' && shuffledQuestions.length > 0 && (
+                <QuizCard
+                  question={shuffledQuestions[currentQuestionIndex]}
+                  totalQuestions={shuffledQuestions.length}
+                  currentIndex={currentQuestionIndex}
+                  onSelect={handleAnswerSelection}
+                />
+              )}
 
-          {gameState === 'RESULT' && (
-            <Result 
-              userAnswers={userAnswers} 
-              questions={QUIZ_QUESTIONS} 
-              onReset={resetGame} 
-            />
-          )}
-        </main>
-      </div>
+              {gameState === 'RESULT' && (
+                <Result 
+                  userAnswers={userAnswers} 
+                  questions={QUIZ_QUESTIONS} 
+                  onReset={resetGame} 
+                />
+              )}
+          </main>
+        </div>
       
       <footer className="mt-8 text-slate-400 text-sm">
         Made for NSWER with Love & Coffee

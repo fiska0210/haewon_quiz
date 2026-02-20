@@ -97,10 +97,10 @@ export const QUIZ_QUESTIONS: Question[] = [
     id: 14,
     text: "下列何者“不是”海嫄在NMIXX官方YouTube頻道Cover過的歌曲？",
     options: ["Sabrina Carpenter - Please Please Please",
-      "DAY6 - 사랑, 이게 맞나 봐",
+      "DAY6 - 사랑, 이게 맞나 봐 (so this is love)",
       "Stephanie Poetri - I Love You 3000 ",
-      "죠지 - Boat"],
-    correctAnswer: "죠지 - Boat",
+      "죠지 (George) - Boat"],
+    correctAnswer: "죠지 (George) - Boat",
     fact: "海嫄的在리무진서비스的快問快唱中有翻唱過Boat的片段，不過在NMIXX的YouTube上有完整Cover這首歌的是Lily唷。"
   },
   {
