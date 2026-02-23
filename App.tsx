@@ -87,7 +87,7 @@ const App: React.FC = () => {
         </div>
       
       <footer className="mt-8 text-slate-400 text-sm">
-        Made for NSWER with Love & Coffee
+        Made for NSWER | © 2026 Haewon Birthday Event 피스카상사
       </footer>
     </div>
   );

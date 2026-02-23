@@ -10,6 +10,7 @@ interface ResultProps {
 }
 
 const Result: React.FC<ResultProps> = ({ userAnswers, questions, onReset }) => {
+  const [igAccount, setIGAccount] = useState('');
   const [xAccount, setXAccount] = useState('');
   const [fansAccount, setFansAccount] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,12 +37,14 @@ const Result: React.FC<ResultProps> = ({ userAnswers, questions, onReset }) => {
 
   const handleSubmitSocial = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!igAccount.trim()) return;
+
     if (!xAccount.trim() && !fansAccount.trim()) return;
 
     setIsSubmitting(true);
     try {
       // 請將下方的 URL 替換為您部署 GAS 後取得的「網頁應用程式 URL」
-      const scriptUrl = 'https://script.google.com/macros/s/AKfycbwhhDetjIP6IR2k4LFi7otVAONMRKP3xTrsRlqY9l9RgEunQLiDpEswZQerTyjJNad8/exec'; 
+      const scriptUrl = 'https://script.google.com/macros/s/AKfycbz4-5iHSFE2DihW8mzSA0tQVU0glHQrTGtgGXRL06M6g7-NF4aJh9Wsa7kzNbu54pVC/exec'; 
 
       // 為了避免 CORS preflight (OPTIONS) 請求導致 400 錯誤
       // 我們使用 text/plain 發送 JSON 字串，GAS 端依然可以解析
@@ -54,6 +57,7 @@ const Result: React.FC<ResultProps> = ({ userAnswers, questions, onReset }) => {
         body: JSON.stringify({
           timestamp: new Date().toLocaleString('zh-TW'),
           score: score,
+          igAccount: igAccount,
           socialInfo: xAccount,
           socialInfo2: fansAccount
         })
@@ -109,6 +113,16 @@ const Result: React.FC<ResultProps> = ({ userAnswers, questions, onReset }) => {
           ) : (
             <form onSubmit={handleSubmitSocial} className="flex flex-col gap-3">
               <div className="flex flex-col gap-2">
+                <label className="text-left text-xs font-bold text-slate-400 ml-2 uppercase">IG/Threads 帳號(必填)</label>
+                <input
+                  type="text"
+                  value={igAccount}
+                  onChange={(e) => setIGAccount(e.target.value)}
+                  placeholder="例如：nmixx_official"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-white focus:border-indigo-500 outline-none transition-all"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
                 <label className="text-left text-xs font-bold text-slate-400 ml-2 uppercase">X (Twitter) 帳號</label>
                 <input
                   type="text"
@@ -141,40 +155,58 @@ const Result: React.FC<ResultProps> = ({ userAnswers, questions, onReset }) => {
         </motion.div>
       )}
 
-      <div className="space-y-4 text-left mb-10 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
-        <h3 className="font-bold text-slate-400 uppercase text-xs tracking-widest mb-4">詳細回顧</h3>
-        {questions.map((q) => {
-          const isCorrect = userAnswers[q.id] === q.correctAnswer;
-          return (
-            <div key={q.id} className={`p-5 rounded-2xl border-2 ${isCorrect ? 'bg-emerald-50/50 border-emerald-100' : 'bg-rose-50/50 border-rose-100'}`}>
-              <div className="flex gap-3 mb-3">
-                {isCorrect ? (
-                  <CheckCircle2 className="text-emerald-500 shrink-0" size={20} />
-                ) : (
-                  <XCircle className="text-rose-500 shrink-0" size={20} />
-                )}
-                <p className="font-bold text-slate-800 leading-tight">{q.text}</p>
-              </div>
-              <div className="pl-8 space-y-2 text-sm">
-                <div className="flex flex-col gap-1">
-                  <span className="text-slate-400 font-medium">你的回答</span>
-                  <span className={`font-bold ${isCorrect ? 'text-emerald-600' : 'text-rose-600'}`}>{userAnswers[q.id]}</span>
+      <div className="space-y-4">
+        <h3 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+          {/* <Info className="w-5 h-5 text-indigo-500" /> */}
+          詳細回顧與來源
+        </h3>
+        <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+          {questions.map((q) => {
+            const isCorrect = userAnswers[q.id] === q.correctAnswer;
+            return (
+              <div key={q.id} className={`p-4 rounded-2xl border-l-4 ${isCorrect ? 'bg-emerald-50 border-emerald-500' : 'bg-rose-50 border-rose-500'}`}>
+                <div className="flex justify-between items-start gap-2 mb-2">
+                  <h4 className="font-bold text-slate-800 text-sm leading-tight">{q.text}</h4>
+                  {isCorrect ? <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0" /> : <XCircle className="w-5 h-5 text-rose-500 flex-shrink-0" />}
                 </div>
-                {!isCorrect && (
-                  <div className="flex flex-col gap-1">
-                    <span className="text-slate-400 font-medium">正確答案</span>
-                    <span className="text-emerald-600 font-bold">{q.correctAnswer}</span>
-                  </div>
-                )}
-                {q.fact && (
-                  <div className="mt-3 p-3 bg-white/50 rounded-xl border border-slate-100 italic text-slate-500">
-                    <span className="font-bold text-indigo-400 not-italic mr-1">TMI:</span> {q.fact}
-                  </div>
-                )}
+                
+                <div className="text-xs space-y-2">
+                  <p className="text-slate-600">
+                    <span className="font-bold">你的答案：</span>
+                    <span className={isCorrect ? 'text-emerald-600' : 'text-rose-600'}>{userAnswers[q.id]}</span>
+                  </p>
+                  {!isCorrect && (
+                    <p className="text-slate-600">
+                      <span className="font-bold">正確答案：</span>
+                      <span className="text-emerald-600">{q.correctAnswer}</span>
+                    </p>
+                  )}
+                  {q.fact && (
+                    <div className="bg-white/50 p-2 rounded-lg mt-2 text-slate-500 italic">
+                      {q.fact}
+                    </div>
+                  )}
+                  
+                  {/* 新增功能：顯示來源網站 */}
+                  {q.sourceUrl && (
+                    <div className="mt-3 pt-2 border-t border-slate-200 flex items-center justify-between">
+                      <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Source</span>
+                      <a 
+                        href={q.sourceUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-indigo-600 hover:text-indigo-800 font-bold transition-colors"
+                      >
+                        查看來源網站
+                        {/* <ExternalLink className="w-3 h-3" /> */}
+                      </a>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
 
       <button
