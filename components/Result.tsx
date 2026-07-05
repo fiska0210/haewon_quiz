@@ -96,7 +96,7 @@ const Result: React.FC<ResultProps> = ({ userAnswers, questions, onReset }) => {
         <p className="text-xl text-slate-600">{getMessage()}</p>
       </div>
 
-      {score >= 6 && (
+      {score >= 16 && (
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
